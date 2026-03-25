@@ -11,24 +11,19 @@ body{background:#07000f;font-family:system-ui,sans-serif;min-height:100vh;paddin
 .page-header h1{font-size:20px;font-weight:900;color:#fff;}
 .page-header p{font-size:11px;color:#9b90b0;margin-top:2px;font-style:italic;}
 .sect-label{font-size:10px;font-weight:700;letter-spacing:2.5px;text-transform:uppercase;color:#c084fc;margin:20px 0 10px;}
-/* WOUND CARDS */
 .wound-card{background:linear-gradient(135deg,#160028,#1e0038);border:1px solid #2a1845;border-left:3px solid #a855f7;border-radius:14px;padding:14px 16px;margin-bottom:10px;}
 .wound-label{font-size:11px;color:#5a5070;margin-bottom:6px;font-style:italic;line-height:1.4;}
 .wound-truth{font-size:15px;color:#ede8f5;font-weight:700;margin-bottom:4px;font-family:Georgia,serif;line-height:1.5;}
 .wound-ref{font-size:11px;color:#c084fc;}
-/* POWER AFFIRMATION */
 .power-card{background:linear-gradient(135deg,#1a003a,#2e0025);border:1px solid #3d2060;border-radius:16px;padding:20px;margin-bottom:10px;text-align:center;}
 .power-label{font-size:10px;font-weight:700;color:#c084fc;letter-spacing:2.5px;text-transform:uppercase;margin-bottom:12px;}
 .power-text{font-size:15px;color:#ede8f5;line-height:1.9;font-style:italic;font-family:Georgia,serif;}
-/* WEEKLY */
 .weekly-card{background:#160028;border:1px solid #2a1845;border-left:3px solid #ec4899;border-radius:14px;padding:14px 16px;margin-bottom:10px;}
 .weekly-range{font-size:11px;font-weight:700;color:#f9a8d4;margin-bottom:6px;}
 .weekly-text{font-size:13px;color:#ede8f5;line-height:1.6;font-style:italic;font-family:Georgia,serif;}
-/* FILTER CHIPS */
 .chips{display:flex;gap:8px;overflow-x:auto;padding-bottom:4px;margin-bottom:16px;}
 .chip{flex-shrink:0;background:#160028;border:1px solid #2a1845;border-radius:20px;padding:7px 14px;font-size:12px;color:#9b90b0;cursor:pointer;white-space:nowrap;transition:all .2s;}
 .chip.active{background:linear-gradient(135deg,#7c3aed,#be185d);border-color:transparent;color:#fff;font-weight:700;}
-/* NAV */
 .bot-nav{position:fixed;bottom:0;left:0;right:0;background:#0e0018;border-top:1px solid #2a1845;display:flex;z-index:100;max-width:480px;margin:0 auto;}
 .nav-btn{flex:1;padding:10px 4px 14px;border:none;background:none;font-size:10px;cursor:pointer;display:flex;flex-direction:column;align-items:center;gap:3px;border-top:2px solid transparent;text-decoration:none;color:#5a5070;}
 .nav-btn.current{color:#c084fc;border-top-color:#c084fc;}
@@ -42,7 +37,6 @@ body{background:#07000f;font-family:system-ui,sans-serif;min-height:100vh;paddin
   <p>Say it out loud. Write it. Return here when you need to remember.</p>
 </div>
 
-<!-- FILTER CHIPS -->
 <div class="chips">
   <div class="chip active" onclick="setFilter('all',this)">All</div>
   <div class="chip" onclick="setFilter('wound',this)">When the Wound Speaks</div>
@@ -50,13 +44,11 @@ body{background:#07000f;font-family:system-ui,sans-serif;min-height:100vh;paddin
   <div class="chip" onclick="setFilter('weekly',this)">Weekly Focus</div>
 </div>
 
-<!-- WOUND AFFIRMATIONS -->
 <div id="sectionWound">
   <div class="sect-label" style="margin-top:0;">When the Wound Speaks</div>
   <div id="woundCards"></div>
 </div>
 
-<!-- POWER AFFIRMATION -->
 <div id="sectionPower">
   <div class="sect-label">Power Affirmation</div>
   <div class="power-card">
@@ -65,14 +57,13 @@ body{background:#07000f;font-family:system-ui,sans-serif;min-height:100vh;paddin
   </div>
 </div>
 
-<!-- WEEKLY FOCUS -->
 <div id="sectionWeekly">
   <div class="sect-label">Weekly Focus by Part</div>
   <div id="weeklyCards"></div>
 </div>
 
 <nav class="bot-nav">
-  <a href="../ual-app" class="nav-btn"><span class="nav-icon">✦</span>Home</a>
+  <a href="https://fletch1980.github.io/Unworthy/" class="nav-btn"><span class="nav-icon">✦</span>Home</a>
   <div class="nav-btn current"><span class="nav-icon">✦</span>Affirm</div>
 </nav>
 
@@ -99,7 +90,7 @@ var WEEKLY=[
   {range:'Part Four — Letters 39–52',  text:'I am being reclaimed. I am rooted and grounded in love. I am becoming who I was always meant to be.'}
 ];
 
-function setFilter(filter, el){
+function setFilter(filter,el){
   document.querySelectorAll('.chip').forEach(function(c){c.classList.remove('active');});
   el.classList.add('active');
   var showAll=filter==='all';
@@ -109,7 +100,6 @@ function setFilter(filter, el){
 }
 
 function render(){
-  // wound cards
   var wHtml='';
   AFFIRMATIONS.forEach(function(a){
     wHtml+='<div class="wound-card">'
@@ -120,7 +110,6 @@ function render(){
   });
   document.getElementById('woundCards').innerHTML=wHtml;
 
-  // weekly cards
   var weekHtml='';
   WEEKLY.forEach(function(w){
     weekHtml+='<div class="weekly-card">'
